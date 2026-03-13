@@ -6,39 +6,25 @@ It provides an experience similar to Trello, focusing on real-time synchronizati
 Live Demo
 https://collab-board-tfch.vercel.app/
 
- Features
+Features
  Boards
-
-Create multiple boards to organize different projects.
-
+ Create multiple boards to organize different projects.
  Lists & Tasks
-
-Add lists and cards to structure workflows.
-
+ Add lists and cards to structure workflows.
  Drag & Drop
-
-Smooth drag-and-drop functionality to reorder lists and tasks.
-
+ Smooth drag-and-drop functionality to reorder lists and tasks.
  Real-Time Collaboration
+ All updates sync instantly across users.
 
-All updates sync instantly across users.
 
- File Uploads
-
-Attach files to tasks using Multer.
-
- Authentication
-
-Secure login and protected routes.
-
+Authentication
+ Secure login and protected routes.
  Persistent Storage
-
-All data stored in PostgreSQL.
+ All data stored in MongoDb.
 
 Tech Stack
 
 FRONTEND
-
 React
 TypeScript
 React Query
@@ -47,13 +33,12 @@ Tailwind CSS
 
 
 BACKEND
-
 Node.js
 Express.js
 WebSockets
 
 Database
-PostgreSQL
+MongoDb
 
 Other Tools
 Multer (file uploads)
@@ -75,7 +60,7 @@ Multer (file uploads)
                           │
                 ┌─────────▼─────────┐
                 │    PostgreSQL     │
-                │     Database      │
+                │     MongoDb       │
                 └───────────────────┘
 
 Real-time synchronization between clients is handled through WebSockets, ensuring instant updates across all users.
@@ -94,7 +79,6 @@ collabboard
 │   ├── controllers
 │   ├── routes
 │   ├── models
-│   ├── queue
 │   ├── workers
 │   └── middleware
 │
@@ -117,14 +101,13 @@ cd backend
 npm install
 
 3️⃣ Environment Variables
-
 Create a .env file inside the backend folder.
 
 Example:
-
 PORT=5000
 DATABASE_URL=postgres://user:password@localhost:5432/collabboard
 JWT_SECRET=your_secret_key
+
 
 4️⃣ Run the Project
 
