@@ -108,19 +108,50 @@ const handleDeleteBoard = async () => {
 
   // Move task
   const moveTaskMutation = useMutation({
-    mutationFn: moveTask,
-    onSuccess: (_data, variables: any) => {
-      queryClient.invalidateQueries({
-        queryKey: ["tasks", variables.sourceListId],
-      });
+  mutationFn: moveTask,
 
-      if (variables.sourceListId !== variables.destinationListId) {
-        queryClient.invalidateQueries({
-          queryKey: ["tasks", variables.destinationListId],
-        });
+  onMutate: async (variables: any) => {
+    await queryClient.cancelQueries({
+      queryKey: ["tasks", variables.sourceListId],
+    });
+
+    const previousTasks = queryClient.getQueryData([
+      "tasks",
+      variables.sourceListId,
+    ]);
+
+    // optimistic update
+    queryClient.setQueryData(
+      ["tasks", variables.sourceListId],
+      (old: any) => {
+        if (!old) return old;
+
+        const updated = [...old];
+        const moved = updated.splice(variables.sourceIndex, 1)[0];
+        updated.splice(variables.newOrder, 0, moved);
+
+        return updated;
       }
-    },
-  });
+    );
+
+    return { previousTasks };
+  },
+
+  onError: (_err, variables, context) => {
+    if (context?.previousTasks) {
+      queryClient.setQueryData(
+        ["tasks", variables.sourceListId],
+        context.previousTasks
+      );
+    }
+  },
+
+  onSettled: (_data, _err, variables) => {
+    queryClient.invalidateQueries({
+      queryKey: ["tasks", variables.sourceListId],
+    });
+  },
+});
 
   
 
