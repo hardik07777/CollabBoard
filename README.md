@@ -40,29 +40,6 @@ WebSockets
 Database
 MongoDb
 
-Other Tools
-Multer (file uploads)
-
-
-🏗 System Architecture
-                ┌────────────────────┐
-                │      Frontend      │
-                │   React + TS UI    │
-                └─────────┬──────────┘
-                          │
-                   REST API + WS
-                          │
-                ┌─────────▼─────────┐
-                │      Backend      │
-                │  Node + Express   │
-                └─────────┬─────────┘
-                          │
-                          │
-                ┌─────────▼─────────┐
-                │    PostgreSQL     │
-                │     MongoDb       │
-                └───────────────────┘
-
 Real-time synchronization between clients is handled through WebSockets, ensuring instant updates across all users.
 
 📂 Project Structure
