@@ -1,15 +1,23 @@
+import Navbar from "./Navbar";
 import Hero from "./Hero";
-import Features from "./Features";
+import Trust from "./Trust";
+import BentoFeatures from "./BentoFeatures";
+import Showcase from "./Showcase";
+import Testimonials from "./Testimonials";
 import CTA from "./Cta";
-import SpecialFooter from "../SpecialFooter";
+import Footer from "./Footer";
 
 export default function Landing() {
   return (
-    <div className="bg-white">
+    <div className="bg-white overflow-hidden">
+      <Navbar />
       <Hero />
-      <Features />
+      <Trust />
+      <BentoFeatures />
+      <Showcase />
+      <Testimonials />
       <CTA />
-      <SpecialFooter />
+      <Footer />
     </div>
   );
 }
