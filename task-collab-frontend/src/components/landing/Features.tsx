@@ -1,57 +1,78 @@
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, History, Move } from "lucide-react";
+import { Zap, ShieldCheck, BarChart3, Move3d, Users, MessageSquare } from "lucide-react";
 
 const features = [
   {
     title: "Real-Time Sync",
-    desc: "Instant board updates powered by WebSockets.",
+    desc: "Instant board updates powered by WebSockets for seamless collaboration.",
     icon: Zap,
+    color: "from-blue-500 to-cyan-500",
   },
   {
-    title: "Role-Based Access",
-    desc: "Secure collaboration with JWT authentication.",
+    title: "Secure Collaboration",
+    desc: "Role-based access with JWT authentication and board isolation.",
     icon: ShieldCheck,
+    color: "from-purple-500 to-pink-500",
   },
   {
-    title: "Activity Logs",
-    desc: "Persistent history with board-level isolation.",
-    icon: History,
+    title: "Activity Tracking",
+    desc: "Complete history and audit logs for accountability and insights.",
+    icon: BarChart3,
+    color: "from-green-500 to-emerald-500",
   },
   {
     title: "Drag & Drop",
-    desc: "Smooth task movement with optimistic UI.",
-    icon: Move,
+    desc: "Smooth task movement with optimistic UI and instant feedback.",
+    icon: Move3d,
+    color: "from-orange-500 to-red-500",
+  },
+  {
+    title: "Team Management",
+    desc: "Invite teammates, manage permissions, and organize by role.",
+    icon: Users,
+    color: "from-indigo-500 to-blue-500",
+  },
+  {
+    title: "Instant Messaging",
+    desc: "Built-in communication to keep discussions contextual and organized.",
+    icon: MessageSquare,
+    color: "from-pink-500 to-purple-500",
   },
 ];
 
 export default function Features() {
   return (
-    <section className="relative py-28 px-6 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+    <section className="relative py-32 px-6 bg-white overflow-hidden">
+      {/* Decorative gradient background */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" />
+      <div className="absolute -bottom-20 left-1/3 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" />
 
-      {/* Subtle background glow */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white blur-3xl opacity-30 rounded-full" />
-
-      <div className="relative max-w-6xl mx-auto text-center">
-
-        {/* Section Heading */}
-        <motion.h2
+      <div className="relative max-w-7xl mx-auto">
+        {/* Section Header */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-gray-900"
+          className="text-center mb-20"
         >
-          Built for Modern Teams
-        </motion.h2>
+          <div className="inline-flex mb-4">
+            <div className="px-4 py-2 rounded-full bg-blue-50 border border-blue-200/50 backdrop-blur-sm">
+              <p className="text-sm font-medium text-blue-700">🚀 Powerful Features</p>
+            </div>
+          </div>
 
-        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-          Everything you need for seamless, real-time collaboration — designed
-          with scalability and performance in mind.
-        </p>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
+            Everything your team needs
+          </h2>
+
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Built with modern teams in mind. Powerful features that scale with your needs.
+          </p>
+        </motion.div>
 
         {/* Feature Grid */}
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, i) => {
             const Icon = feature.icon;
 
@@ -60,30 +81,40 @@ export default function Features() {
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -8 }}
-                className="group relative bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group relative bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/40 shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden"
               >
-                {/* Gradient top bar */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition" />
+                {/* Gradient overlay on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`} />
 
-                {/* Icon */}
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 mb-6 group-hover:bg-indigo-100 transition">
-                  <Icon size={24} />
+                {/* Icon background glow */}
+                <div className={`absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br ${feature.color} rounded-full opacity-0 group-hover:opacity-10 blur-2xl transition-all duration-500`} />
+
+                <div className="relative space-y-4">
+                  {/* Icon */}
+                  <div className={`w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br ${feature.color} text-white shadow-lg group-hover:shadow-xl transition-all`}>
+                    <Icon size={28} />
+                  </div>
+
+                  {/* Content */}
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text transition-all duration-300">
+                      {feature.title}
+                    </h3>
+
+                    <p className="mt-3 text-gray-600 leading-relaxed">
+                      {feature.desc}
+                    </p>
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {feature.title}
-                </h3>
-
-                <p className="mt-3 text-gray-600">
-                  {feature.desc}
-                </p>
+                {/* Bottom accent line */}
+                <div className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r ${feature.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
               </motion.div>
             );
           })}
-
         </div>
       </div>
     </section>
