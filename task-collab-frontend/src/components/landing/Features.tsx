@@ -1,121 +1,88 @@
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, BarChart3, Move3d, Users, MessageSquare } from "lucide-react";
+import { Check } from "lucide-react";
 
-const features = [
+const sections = [
   {
-    title: "Real-Time Sync",
-    desc: "Instant board updates powered by WebSockets for seamless collaboration.",
-    icon: Zap,
-    color: "from-blue-500 to-cyan-500",
+    title: "Real-time collaboration",
+    description: "See your team's changes instantly. No more waiting, no more confusion. WebSocket-powered sync keeps everyone on the same page.",
+    items: ["Live updates", "Instant notifications", "Smart conflict resolution"],
+    imageRight: true,
   },
   {
-    title: "Secure Collaboration",
-    desc: "Role-based access with JWT authentication and board isolation.",
-    icon: ShieldCheck,
-    color: "from-purple-500 to-pink-500",
+    title: "Works the way you do",
+    description: "Drag and drop tasks, customize workflows, and adapt the board to your team's unique needs. Flexibility without complexity.",
+    items: ["Drag & drop interface", "Custom columns", "Team workflows"],
+    imageRight: false,
   },
   {
-    title: "Activity Tracking",
-    desc: "Complete history and audit logs for accountability and insights.",
-    icon: BarChart3,
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    title: "Drag & Drop",
-    desc: "Smooth task movement with optimistic UI and instant feedback.",
-    icon: Move3d,
-    color: "from-orange-500 to-red-500",
-  },
-  {
-    title: "Team Management",
-    desc: "Invite teammates, manage permissions, and organize by role.",
-    icon: Users,
-    color: "from-indigo-500 to-blue-500",
-  },
-  {
-    title: "Instant Messaging",
-    desc: "Built-in communication to keep discussions contextual and organized.",
-    icon: MessageSquare,
-    color: "from-pink-500 to-purple-500",
+    title: "Built for teams",
+    description: "Manage permissions, invite teammates, and keep everyone accountable. Secure by default with role-based access control.",
+    items: ["Role-based access", "Team management", "Audit logs"],
+    imageRight: true,
   },
 ];
 
 export default function Features() {
   return (
-    <section className="relative py-32 px-6 bg-white overflow-hidden">
-      {/* Decorative gradient background */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" />
-      <div className="absolute -bottom-20 left-1/3 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" />
+    <section className="py-32 px-6 bg-white">
+      <div className="max-w-6xl mx-auto space-y-32">
+        {sections.map((section, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className={`grid lg:grid-cols-2 gap-16 items-center ${
+              section.imageRight ? "" : "lg:auto-cols-fr"
+            }`}
+          >
+            {/* Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: section.imageRight ? -40 : 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className={section.imageRight ? "" : "lg:order-2"}
+            >
+              <div className="text-sm font-medium text-gray-600 mb-3">
+                Feature {i + 1}
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-medium text-gray-900 mb-6 leading-tight">
+                {section.title}
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                {section.description}
+              </p>
 
-      <div className="relative max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <div className="inline-flex mb-4">
-            <div className="px-4 py-2 rounded-full bg-blue-50 border border-blue-200/50 backdrop-blur-sm">
-              <p className="text-sm font-medium text-blue-700">🚀 Powerful Features</p>
-            </div>
-          </div>
+              {/* Feature list */}
+              <ul className="space-y-3">
+                {section.items.map((item, j) => (
+                  <li key={j} className="flex items-center gap-3 text-gray-700">
+                    <Check className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                    <span className="font-medium">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
 
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
-            Everything your team needs
-          </h2>
-
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Built with modern teams in mind. Powerful features that scale with your needs.
-          </p>
-        </motion.div>
-
-        {/* Feature Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, i) => {
-            const Icon = feature.icon;
-
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-                className="group relative bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/40 shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden"
-              >
-                {/* Gradient overlay on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`} />
-
-                {/* Icon background glow */}
-                <div className={`absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br ${feature.color} rounded-full opacity-0 group-hover:opacity-10 blur-2xl transition-all duration-500`} />
-
-                <div className="relative space-y-4">
-                  {/* Icon */}
-                  <div className={`w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br ${feature.color} text-white shadow-lg group-hover:shadow-xl transition-all`}>
-                    <Icon size={28} />
-                  </div>
-
-                  {/* Content */}
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text transition-all duration-300">
-                      {feature.title}
-                    </h3>
-
-                    <p className="mt-3 text-gray-600 leading-relaxed">
-                      {feature.desc}
-                    </p>
-                  </div>
+            {/* Image Placeholder */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className={section.imageRight ? "" : "lg:order-1"}
+            >
+              <div className="bg-gray-100 rounded-lg border border-gray-200 aspect-square flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-gray-400 text-sm">Product screenshot</div>
+                  <div className="text-gray-300 text-xs mt-2">Feature {i + 1}</div>
                 </div>
-
-                {/* Bottom accent line */}
-                <div className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r ${feature.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
-              </motion.div>
-            );
-          })}
-        </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

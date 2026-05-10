@@ -1,177 +1,109 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative w-full overflow-hidden bg-white pt-32 pb-24">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-white to-purple-50/40 pointer-events-none" />
-      
-      {/* Decorative glassmorphism blur elements */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
-      <div className="absolute -bottom-20 right-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
-
-      <div className="relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-blue-50 to-white pt-20 pb-32">
+      <div className="relative max-w-6xl mx-auto px-6 md:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center pt-12">
           {/* LEFT SIDE - CONTENT */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            {/* Badge */}
-            <div className="inline-flex">
-              <div className="px-4 py-2 rounded-full bg-blue-50 border border-blue-200/50 backdrop-blur-sm">
-                <p className="text-sm font-medium text-blue-700">✨ Real-time collaboration, made simple</p>
-              </div>
+            {/* Small label */}
+            <div className="text-sm font-medium text-gray-600">
+              Collaboration made simple
             </div>
 
             {/* Main Heading */}
-            <div>
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-900 tracking-tight">
-                Organize Work.
-                <br />
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Collaborate Better.
-                </span>
-              </h1>
-            </div>
+            <h1 className="text-5xl lg:text-6xl font-medium leading-tight text-gray-900">
+              Real-time teamwork. No complexity.
+            </h1>
 
             {/* Subheading */}
-            <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
-              CollabBoard makes it effortless to plan, track, and deliver with your team. Real-time sync. Zero friction.
+            <p className="text-lg text-gray-600 leading-relaxed max-w-lg font-light">
+              CollabBoard brings your team together. Plan projects, track progress, and collaborate in real-time without the overhead.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <motion.a
+              <a
                 href="/register"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors text-sm"
               >
-                Get Started Free
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
+                Start for free
+              </a>
 
-              <motion.a
+              <a
                 href="/login"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-gray-300 hover:bg-gray-50 transition-all duration-300"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-colors text-sm"
               >
-                Sign In
-              </motion.a>
+                Sign in
+              </a>
             </div>
 
             {/* Trust line */}
-            <div className="flex items-center gap-6 pt-4">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 border-2 border-white flex items-center justify-center text-xs text-white font-bold"
-                  >
-                    {i}
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm text-gray-600">
-                Trusted by teams building great products
-              </p>
-            </div>
+            <p className="text-sm text-gray-500 pt-2">
+              No credit card required. Free forever plan available.
+            </p>
           </motion.div>
 
-          {/* RIGHT SIDE - BOARD PREVIEW */}
+          {/* RIGHT SIDE - DASHBOARD PREVIEW */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             className="relative"
           >
-            {/* Glassmorphic card container */}
-            <div className="relative group">
-              {/* Glow effect */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition duration-500" />
+            <div className="bg-white rounded-lg border border-gray-200 shadow-lg p-6 space-y-4">
+              {/* Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-gray-100">
+                <h3 className="text-sm font-semibold text-gray-900">Project Board</h3>
+                <div className="flex gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                </div>
+              </div>
 
-              {/* Main board card */}
-              <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl border border-white/40 shadow-2xl p-8 overflow-hidden">
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-blue-50/30 pointer-events-none rounded-2xl" />
-
-                <div className="relative space-y-4">
-                  {/* Board Header */}
-                  <div className="flex items-center justify-between pb-6 border-b border-gray-200/50">
-                    <div>
-                      <h3 className="text-sm font-semibold text-gray-900">Product Launch</h3>
-                      <p className="text-xs text-gray-500 mt-1">3 columns • 8 tasks</p>
+              {/* Columns */}
+              <div className="grid grid-cols-3 gap-4">
+                {/* TODO */}
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">To Do</p>
+                  <div className="space-y-2">
+                    <div className="bg-gray-50 border border-gray-100 rounded p-2 text-xs text-gray-700">
+                      Design mockups
                     </div>
-                    <div className="flex gap-2">
-                      <div className="w-2 h-2 rounded-full bg-red-400" />
-                      <div className="w-2 h-2 rounded-full bg-yellow-400" />
-                      <div className="w-2 h-2 rounded-full bg-green-400" />
+                    <div className="bg-gray-50 border border-gray-100 rounded p-2 text-xs text-gray-700">
+                      API setup
                     </div>
                   </div>
+                </div>
 
-                  {/* Board Columns */}
-                  <div className="grid grid-cols-3 gap-4">
-                    {/* TODO Column */}
-                    <div className="space-y-3">
-                      <h4 className="text-xs font-semibold text-gray-600 uppercase tracking-wide">To Do</h4>
-                      <div className="space-y-2">
-                        <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-200/50 rounded-lg p-3 text-sm text-gray-700 font-medium hover:shadow-md transition-all">
-                          Design System
-                        </div>
-                        <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-200/50 rounded-lg p-3 text-sm text-gray-700 font-medium hover:shadow-md transition-all">
-                          Setup Payments
-                        </div>
-                      </div>
+                {/* IN PROGRESS */}
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">In Progress</p>
+                  <div className="space-y-2">
+                    <div className="bg-blue-50 border border-blue-100 rounded p-2 text-xs text-gray-700">
+                      Frontend build
                     </div>
+                  </div>
+                </div>
 
-                    {/* DOING Column */}
-                    <div className="space-y-3">
-                      <h4 className="text-xs font-semibold text-gray-600 uppercase tracking-wide">In Progress</h4>
-                      <div className="space-y-2">
-                        <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 border border-purple-200/50 rounded-lg p-3 text-sm text-gray-700 font-medium hover:shadow-md transition-all">
-                          Real-time Sync
-                        </div>
-                        <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 border border-purple-200/50 rounded-lg p-3 text-sm text-gray-700 font-medium hover:shadow-md transition-all">
-                          Auth Flow
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* DONE Column */}
-                    <div className="space-y-3">
-                      <h4 className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Completed</h4>
-                      <div className="space-y-2">
-                        <div className="bg-gradient-to-br from-green-50 to-green-100/50 border border-green-200/50 rounded-lg p-3 text-sm text-gray-700 font-medium hover:shadow-md transition-all">
-                          ✓ Database Setup
-                        </div>
-                        <div className="bg-gradient-to-br from-green-50 to-green-100/50 border border-green-200/50 rounded-lg p-3 text-sm text-gray-700 font-medium hover:shadow-md transition-all">
-                          ✓ API Endpoints
-                        </div>
-                      </div>
+                {/* DONE */}
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Done</p>
+                  <div className="space-y-2">
+                    <div className="bg-green-50 border border-green-100 rounded p-2 text-xs text-gray-700">
+                      ✓ Planning
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Floating badge */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -bottom-4 -right-4 bg-white/90 backdrop-blur-xl rounded-xl border border-white/40 shadow-xl p-4 max-w-xs"
-            >
-              <p className="text-sm font-semibold text-gray-900">
-                ⚡ Synced in real-time
-              </p>
-              <p className="text-xs text-gray-600 mt-1">
-                All changes instantly reflected across your team
-              </p>
-            </motion.div>
           </motion.div>
         </div>
       </div>
